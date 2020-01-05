@@ -38,6 +38,23 @@ def dm_to_sd(dm):
     d, m = re.match(r'^(\d+)(\d\d\.\d+)$', dm).groups()
     return float(d) + float(m) / 60
 
+class SpdOverGrndFix(object):
+    '''Ground speed (spd_over_grnd) conversion from knots per hour to km/h and m/s'''
+    #pylint: disable=no-member
+    @property
+    def spd_over_grnd_ms(self):
+        if not self.spd_over_grnd or self.spd_over_grnd == '0':
+            return 0.
+        
+        return (self.spd_over_grnd * (1852.0 / 3600.0))
+
+    @property
+    def spd_over_grnd_kmph(self):
+        if not self.spd_over_grnd or self.spd_over_grnd == '0':
+            return 0.
+        
+        return (self.spd_over_grnd * 1.852)
+
 
 class LatLonFix(object):
     '''Mixin to add `latitude` and `longitude` properties as signed decimals

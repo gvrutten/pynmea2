@@ -5,7 +5,7 @@ data = "$GPGGA,184353.07,1929.045,S,02410.506,E,1,04,2.6,100.00,M,-33.9,M,,0000*
 
 
 def test_version():
-    version = '1.15.0'
+    version = '1.15.2'
     assert pynmea2.version == version
     assert pynmea2.__version__ == version
 
@@ -46,6 +46,10 @@ def test_mixin():
     assert msg.latitude_seconds  ==  2.6999999999970896
     assert msg.longitude_seconds == 30.360000000000582
 
+def test_speed():
+    msg = pynmea2.parse("$GPRMC,141213.000,V,5220.50946,N,00559.76580,E,5.0,0.0,311219,,,N*70")
+    assert msg.spd_over_grnd_ms == 2.5722222222222224
+    assert msg.spd_over_grnd_kmph == 9.26
 
 def test_missing():
     msg = pynmea2.parse("$GPVTG,108.53,T,,M,0.04,N,0.07,K,A*31")

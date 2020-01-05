@@ -290,7 +290,7 @@ class HDT(TalkerSentence):
     )
 
 
-class RMA(TalkerSentence):
+class RMA(TalkerSentence, SpdOverGrndFix):
     fields = (
         ("Data status", "data_status"),
         ("Latitude", "lat"),
@@ -324,7 +324,7 @@ class RMB(TalkerSentence, ValidStatusFix):
         ("Arrival Alarm", "arrival_alarm"),
     ) # A = Arrived, V = Not arrived
 
-class RMC(TalkerSentence, ValidStatusFix, LatLonFix, DatetimeFix):
+class RMC(TalkerSentence, ValidStatusFix, LatLonFix, DatetimeFix, SpdOverGrndFix):
     """ Recommended Minimum Specific GPS/TRANSIT Data
     """
     fields = (
