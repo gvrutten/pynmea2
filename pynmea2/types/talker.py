@@ -155,7 +155,7 @@ class GGA(TalkerSentence, ValidGGAFix, LatLonFix):
         ('Longitude', 'lon'),
         ('Longitude Direction', 'lon_dir'),
         ('GPS Quality Indicator', 'gps_qual', int),
-        ('Number of Satellites in use', 'num_sats'),
+        ('Number of Satellites in use', 'num_sats', int),
         ('Horizontal Dilution of Precision', 'horizontal_dil'),
         ('Antenna Alt above sea level (mean)', 'altitude', float),
         ('Units of altitude (meters)', 'altitude_units'),
